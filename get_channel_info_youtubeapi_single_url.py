@@ -45,7 +45,6 @@ class youtube_wrapper(object):
             if creds and creds.expired and creds.refresh_token:
                 try:
                    asda= creds.refresh(Request())
-                   asdf=0
                 except Exception as ex:
                     logging.error(f'an error in fetching youtube api: {ex}')
                     os.unlink('token.pickle')
@@ -54,7 +53,6 @@ class youtube_wrapper(object):
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(client_secrets_file, self.SCOPES)
                 creds = flow.run_local_server(open_browser=False)
-                asdasd=0
             # save the credentials for the next run
             with open("token.pickle", "wb") as token:
                 pickle.dump(creds, token)
